@@ -15,9 +15,9 @@ export class AppComponent implements OnInit{
   ) {
     this.router.events.forEach((event: any) => {
       if (event.url) {
-        this.showCommonComponents = !(event.url == '/authenticate' || event.url == '/ || ');
+        this.showCommonComponents = !(event.url == '/authenticate' || event.url == '/registration');
       } else if (event.routerEvent) {
-        this.showCommonComponents = !(event.routerEvent.url === '/authenticate' || event.routerEvent.url === '/ || ');
+        this.showCommonComponents = !(event.routerEvent.url === '/authenticate' || event.routerEvent.url === '/registration');
       }
     });
   }
