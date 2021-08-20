@@ -11,11 +11,11 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'registration',
+    path: 'reg',
     component: RegistrationComponent
   },
   {
-    path: 'authenticate',
+    path: 'auth',
     component: AuthComponent
   },
   {
