@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ApiService} from "./api.service";
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AuthService {
   private _user: any;
 
   constructor(
-    private api: ApiService
+    private api: ApiService,
   ) {
     if (localStorage.getItem('user')) {
       this._user = JSON.parse(<string>localStorage.getItem('user'));
@@ -45,6 +46,10 @@ export class AuthService {
     this._token = null;
     this._user = null;
     localStorage.clear();
+  }
+
+  isAuthenticated() {
+    return !(new JwtHelperService().isTokenExpired(this._token));
   }
 
   get user() {
