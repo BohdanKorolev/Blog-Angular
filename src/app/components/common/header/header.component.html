@@ -22,12 +22,12 @@
         <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
       </form>
 
-      <div class="text-end d-flex align-items-center" *ngIf="isUserValid">
+      <div class="text-end d-flex align-items-center" *ngIf="authService.isAuthenticated()">
         <h5 class="mb-0 mr-3">{{user.name}}</h5>
         <button type="button" class="btn btn-outline-warning mr-3" (click)="logOutUser()">Logout</button>
       </div>
 
-      <div class="text-end" *ngIf="!isUserValid">
+      <div class="text-end" *ngIf="!authService.isAuthenticated()">
         <button type="button" routerLink="/auth" class="btn btn-outline-light mr-3">Login</button>
         <button type="button" routerLink="/reg" class="btn btn-warning">Sign-up</button>
       </div>

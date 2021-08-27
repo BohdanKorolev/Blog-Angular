@@ -10,23 +10,19 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
 
   user: any;
-  isUserValid: boolean = false;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
   ) {
   }
 
   ngOnInit(): void {
     this.user = this.authService.user;
-    this.isUserValid = this.authService.isAuthenticated();
     console.log(this.authService.isAuthenticated());
   }
 
   logOutUser() {
-    console.log('lol');
     this.authService.logout();
-    this.isUserValid = this.authService.isAuthenticated();
   }
 
 }
