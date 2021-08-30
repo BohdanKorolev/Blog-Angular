@@ -3,19 +3,16 @@
     posts is here
   </div>
   <div class="col-3">
-    <button class="btn btn-block btn-success my-2" type="button" data-toggle="modal" data-target="#exampleModal">
-      Add new category<i class="bi bi-plus-lg ml-2"></i>
+    <button class="btn btn-block btn-success my-2" type="button" (click)="showAddCategoryModal()">
+      Add<i class="bi bi-plus-lg ml-2"></i>
     </button>
     <div class="categories-bloc d-flex flex-wrap shadow-sm p-2 mb-5 bg-white rounded border">
       <div class="category d-flex align-items-center p-1 rounded bg-info text-monospace text-white m-1" *ngFor="let category of categories">
         <span class="mr-1">{{category.name}}</span>
-        <button type="button" class="close" aria-label="Close">
+        <button type="button" class="close" aria-label="Close" (click)="removeCategory(category)">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
     </div>
   </div>
 </div>
-
-<app-add-category-modal (onAdd)="updateCategories()">
-</app-add-category-modal>

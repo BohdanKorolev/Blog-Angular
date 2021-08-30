@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {CategoryService} from "../../../../services/category.service";
+import {BsModalRef} from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'app-add-category-modal',
@@ -11,13 +12,11 @@ export class AddCategoryModalComponent implements OnInit {
 
   inputName: FormControl;
 
-  @Output() onAdd: EventEmitter<any>;
-
   constructor(
     private categoryService: CategoryService,
+    public bsModalRef: BsModalRef
   ) {
     this.inputName = new FormControl();
-    this.onAdd = new EventEmitter<any>();
   }
 
   ngOnInit(): void {
@@ -27,8 +26,9 @@ export class AddCategoryModalComponent implements OnInit {
     if (this.inputName.value) {
       this.categoryService.addCategory(this.inputName.value)
         .subscribe(message => {
-          alert(message);
-          this.onAdd.emit(true);
+          this.bsModalRef.hide();
+          this.inputName.setValue('');
+          this.categoryService.notifyCategoriesChange();
         })
     }
   }

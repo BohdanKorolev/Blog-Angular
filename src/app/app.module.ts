@@ -14,6 +14,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxSpinnerModule} from "ngx-spinner";
 import { AddCategoryModalComponent } from './components/pages/dashboard/add-category-modal/add-category-modal.component';
+import {BsModalRef, ModalModule} from "ngx-bootstrap/modal";
+import { RemoveCategoryModalComponent } from './components/pages/dashboard/remove-category-modal/remove-category-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { AddCategoryModalComponent } from './components/pages/dashboard/add-cate
     AuthComponent,
     DashboardComponent,
     FooterComponent,
-    AddCategoryModalComponent
+    AddCategoryModalComponent,
+    RemoveCategoryModalComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +35,12 @@ import { AddCategoryModalComponent } from './components/pages/dashboard/add-cate
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    BsModalRef
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

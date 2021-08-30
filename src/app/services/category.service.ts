@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ApiService} from "./api.service";
-import {environment} from "../../environments/environment";
 import {map} from "rxjs/operators";
+import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ import {map} from "rxjs/operators";
 export class CategoryService {
 
   private _categories = [];
+  private inCategoriesChange = new Subject();
 
   constructor(
     private api: ApiService
@@ -33,6 +34,13 @@ export class CategoryService {
       )
   }
 
+  notifyCategoriesChange() {
+    this.getCategories()
+      .subscribe(categories => {
+        this.inCategoriesChange.next(categories);
+      })
+  }
+
   addCategory(categoryName: string) {
     return this.api.post('/category/add', {
       name: categoryName
@@ -44,7 +52,7 @@ export class CategoryService {
       )
   }
 
-  removeCategory(categoryId: any) {
+  removeCategoryById(categoryId: any) {
     return this.api.post('/category/remove', {
       id: categoryId
     })
@@ -53,5 +61,20 @@ export class CategoryService {
           return data.msg;
         })
       )
+  }
+
+  removeCategoryByName(categoryName: any) {
+    return this.api.post('/category/remove', {
+      name: categoryName
+    })
+      .pipe(
+        map((data: any) => {
+          return data.msg;
+        })
+      )
+  }
+
+  get onCategoriesChange() {
+    return this.inCategoriesChange.asObservable();
   }
 }
