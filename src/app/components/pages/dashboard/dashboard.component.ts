@@ -21,4 +21,10 @@ export class DashboardComponent implements OnInit {
       })
   }
 
+  updateCategories() {
+    this.categoryService.getCategories()
+      .subscribe(response => {
+        this.categories = response;
+      })
+  }
 }

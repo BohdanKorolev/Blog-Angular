@@ -13,6 +13,7 @@ import {FooterComponent} from './components/common/footer/footer.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxSpinnerModule} from "ngx-spinner";
+import { AddCategoryModalComponent } from './components/pages/dashboard/add-category-modal/add-category-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {NgxSpinnerModule} from "ngx-spinner";
     RegistrationComponent,
     AuthComponent,
     DashboardComponent,
-    FooterComponent
+    FooterComponent,
+    AddCategoryModalComponent
   ],
   imports: [
     BrowserModule,
