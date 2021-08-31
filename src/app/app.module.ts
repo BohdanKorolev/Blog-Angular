@@ -16,6 +16,7 @@ import {NgxSpinnerModule} from "ngx-spinner";
 import { AddCategoryModalComponent } from './components/pages/dashboard/add-category-modal/add-category-modal.component';
 import {BsModalRef, ModalModule} from "ngx-bootstrap/modal";
 import { RemoveCategoryModalComponent } from './components/pages/dashboard/remove-category-modal/remove-category-modal.component';
+import {QuillModule} from "ngx-quill";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RemoveCategoryModalComponent } from './components/pages/dashboard/remov
     ReactiveFormsModule,
     HttpClientModule,
     NgxSpinnerModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    QuillModule.forRoot()
   ],
   providers: [
     BsModalRef
