@@ -88,7 +88,7 @@ export class DashboardComponent implements OnInit {
       const postObject: Post = {
         categoryId: this.newPostForm.controls.inputCategory.value,
         title: this.newPostForm.controls.inputTitle.value,
-        bannerImg: this.newPostForm.controls.inputBanner.value,
+        bannerImg: this.newPostForm.controls.inputBanner.value.replace(/(<p>)(<\/p>)/gm, ''),
         content: this.newPostForm.controls.inputInfo.value,
         author: JSON.parse(<string>localStorage.getItem('user')).login,
         dateTime: new Date()
