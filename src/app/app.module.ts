@@ -13,9 +13,9 @@ import {FooterComponent} from './components/common/footer/footer.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxSpinnerModule} from "ngx-spinner";
-import { AddCategoryModalComponent } from './components/pages/dashboard/add-category-modal/add-category-modal.component';
+import {AddCategoryModalComponent} from './components/pages/dashboard/add-category-modal/add-category-modal.component';
 import {BsModalRef, ModalModule} from "ngx-bootstrap/modal";
-import { RemoveCategoryModalComponent } from './components/pages/dashboard/remove-category-modal/remove-category-modal.component';
+import {RemoveCategoryModalComponent} from './components/pages/dashboard/remove-category-modal/remove-category-modal.component';
 import {QuillModule} from "ngx-quill";
 
 @NgModule({

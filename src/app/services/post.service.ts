@@ -32,4 +32,16 @@ export class PostService {
       )
   }
 
+  getPosts() {
+    return this.api.get('/post/all')
+      .pipe(
+        map((resp: any) => {
+          return resp.posts.map((post: any) => ({
+            ...post,
+            bannerImg: /data[^"]+/.exec(post.bannerImg)
+          }));
+        })
+      );
+  }
+
 }
